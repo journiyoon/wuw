@@ -21,7 +21,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.flywaydb:flyway-core'
     implementation 'org.flywaydb:flyway-mysql'
-    implementation 'org.hibernate:hibernate-tools:5.5.6.Final'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'com.mysql:mysql-connector-j'
@@ -30,14 +29,6 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 }
 
-//tasks.named('test') {
-//    useJUnitPlatform()
-//}
-task generateEntities(type: JavaExec) {
-    classpath = sourceSets.main.runtimeClasspath
-    main = 'org..tool.ant.HibernateToolTask'
-    args = [
-            '-cfg', 'path/to/hibernate.cfg.xml', // hibernate.cfg.xml 파일 경로 지정
-            'hbm2java' // Hibernate 도구 명령hibernate
-    ]
+tasks.named('test') {
+    useJUnitPlatform()
 }
