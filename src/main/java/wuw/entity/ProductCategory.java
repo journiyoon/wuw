@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "ProductCategory", schema = "wuw", catalog = "")
-public class ProductCategoryEntity {
+public class ProductCategory {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
@@ -45,7 +45,7 @@ public class ProductCategoryEntity {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProductCategoryEntity that = (ProductCategoryEntity) o;
+    ProductCategory that = (ProductCategory) o;
     return Objects.equals(productId, that.productId) && Objects.equals(categoryId,
         that.categoryId);
   }

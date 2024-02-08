@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Shipment", schema = "wuw", catalog = "")
-public class ShipmentEntity {
+public class Shipment {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
@@ -56,7 +56,7 @@ public class ShipmentEntity {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ShipmentEntity that = (ShipmentEntity) o;
+    Shipment that = (Shipment) o;
     return Objects.equals(id, that.id) && Objects.equals(orderId, that.orderId)
         && Objects.equals(shipmentStatus, that.shipmentStatus);
   }

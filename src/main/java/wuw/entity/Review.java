@@ -10,25 +10,25 @@ import jakarta.persistence.Table;
 import java.util.Objects;
 
 @Entity
-@Table(name = "OrderDetail", schema = "wuw", catalog = "")
-public class OrderDetailEntity {
+@Table(name = "Review", schema = "wuw", catalog = "")
+public class Review {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
   @Column(name = "id")
   private String id;
   @Basic
-  @Column(name = "order_id")
-  private String orderId;
-  @Basic
   @Column(name = "product_id")
   private String productId;
   @Basic
-  @Column(name = "quantity")
-  private long quantity;
+  @Column(name = "user_id")
+  private String userId;
   @Basic
-  @Column(name = "subtotal")
-  private long subtotal;
+  @Column(name = "rating")
+  private short rating;
+  @Basic
+  @Column(name = "comment")
+  private String comment;
 
   public String getId() {
     return id;
@@ -36,14 +36,6 @@ public class OrderDetailEntity {
 
   public void setId(String id) {
     this.id = id;
-  }
-
-  public String getOrderId() {
-    return orderId;
-  }
-
-  public void setOrderId(String orderId) {
-    this.orderId = orderId;
   }
 
   public String getProductId() {
@@ -54,20 +46,28 @@ public class OrderDetailEntity {
     this.productId = productId;
   }
 
-  public long getQuantity() {
-    return quantity;
+  public String getUserId() {
+    return userId;
   }
 
-  public void setQuantity(long quantity) {
-    this.quantity = quantity;
+  public void setUserId(String userId) {
+    this.userId = userId;
   }
 
-  public long getSubtotal() {
-    return subtotal;
+  public short getRating() {
+    return rating;
   }
 
-  public void setSubtotal(long subtotal) {
-    this.subtotal = subtotal;
+  public void setRating(short rating) {
+    this.rating = rating;
+  }
+
+  public String getComment() {
+    return comment;
+  }
+
+  public void setComment(String comment) {
+    this.comment = comment;
   }
 
   @Override
@@ -78,14 +78,14 @@ public class OrderDetailEntity {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OrderDetailEntity that = (OrderDetailEntity) o;
-    return quantity == that.quantity && subtotal == that.subtotal && Objects.equals(id,
-        that.id) && Objects.equals(orderId, that.orderId) && Objects.equals(
-        productId, that.productId);
+    Review that = (Review) o;
+    return rating == that.rating && Objects.equals(id, that.id) && Objects.equals(
+        productId, that.productId) && Objects.equals(userId, that.userId)
+        && Objects.equals(comment, that.comment);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, orderId, productId, quantity, subtotal);
+    return Objects.hash(id, productId, userId, rating, comment);
   }
 }

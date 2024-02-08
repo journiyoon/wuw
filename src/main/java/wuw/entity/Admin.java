@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Admin", schema = "wuw", catalog = "")
-public class AdminEntity {
+public class Admin {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
@@ -67,7 +67,7 @@ public class AdminEntity {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AdminEntity that = (AdminEntity) o;
+    Admin that = (Admin) o;
     return password == that.password && email == that.email && Objects.equals(id, that.id)
         && Objects.equals(username, that.username);
   }

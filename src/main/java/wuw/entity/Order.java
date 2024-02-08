@@ -7,28 +7,26 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Review", schema = "wuw", catalog = "")
-public class ReviewEntity {
+@Table(name = "Order", schema = "wuw", catalog = "")
+public class Order {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
   @Column(name = "id")
   private String id;
   @Basic
-  @Column(name = "product_id")
-  private String productId;
-  @Basic
   @Column(name = "user_id")
   private String userId;
   @Basic
-  @Column(name = "rating")
-  private short rating;
+  @Column(name = "order_date")
+  private Timestamp orderDate;
   @Basic
-  @Column(name = "comment")
-  private String comment;
+  @Column(name = "status")
+  private byte status;
 
   public String getId() {
     return id;
@@ -36,14 +34,6 @@ public class ReviewEntity {
 
   public void setId(String id) {
     this.id = id;
-  }
-
-  public String getProductId() {
-    return productId;
-  }
-
-  public void setProductId(String productId) {
-    this.productId = productId;
   }
 
   public String getUserId() {
@@ -54,20 +44,20 @@ public class ReviewEntity {
     this.userId = userId;
   }
 
-  public short getRating() {
-    return rating;
+  public Timestamp getOrderDate() {
+    return orderDate;
   }
 
-  public void setRating(short rating) {
-    this.rating = rating;
+  public void setOrderDate(Timestamp orderDate) {
+    this.orderDate = orderDate;
   }
 
-  public String getComment() {
-    return comment;
+  public byte getStatus() {
+    return status;
   }
 
-  public void setComment(String comment) {
-    this.comment = comment;
+  public void setStatus(byte status) {
+    this.status = status;
   }
 
   @Override
@@ -78,14 +68,13 @@ public class ReviewEntity {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ReviewEntity that = (ReviewEntity) o;
-    return rating == that.rating && Objects.equals(id, that.id) && Objects.equals(
-        productId, that.productId) && Objects.equals(userId, that.userId)
-        && Objects.equals(comment, that.comment);
+    Order that = (Order) o;
+    return status == that.status && Objects.equals(id, that.id) && Objects.equals(
+        userId, that.userId) && Objects.equals(orderDate, that.orderDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, productId, userId, rating, comment);
+    return Objects.hash(id, userId, orderDate, status);
   }
 }

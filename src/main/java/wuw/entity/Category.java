@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Category", schema = "wuw", catalog = "")
-public class CategoryEntity {
+public class Category {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
@@ -56,7 +56,7 @@ public class CategoryEntity {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CategoryEntity that = (CategoryEntity) o;
+    Category that = (Category) o;
     return Objects.equals(id, that.id) && Objects.equals(name, that.name)
         && Objects.equals(description, that.description);
   }

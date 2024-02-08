@@ -12,7 +12,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Payment", schema = "wuw", catalog = "")
-public class PaymentEntity {
+public class Payment {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
@@ -79,7 +79,7 @@ public class PaymentEntity {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PaymentEntity that = (PaymentEntity) o;
+    Payment that = (Payment) o;
     return totalAmount == that.totalAmount && Objects.equals(id, that.id)
         && Objects.equals(orderId, that.orderId) && Objects.equals(paymentDate,
         that.paymentDate) && Objects.equals(paymentMethod, that.paymentMethod);
